@@ -20,7 +20,8 @@ let genericCopys: TGenericCopys = {
     ...HomeCopy,
     ...copyBooking,
     ...copyPaseenger,
-    ...copySeat
+    ...copySeat,
+    targetMethod: 'none'
 };
 
 const setDataTest = (data: TGenericCopys) => {

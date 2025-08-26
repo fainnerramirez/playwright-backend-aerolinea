@@ -1,5 +1,5 @@
 const GLOBAL_VARIABLES = {
-    headless: false
+    headless: true
 }
 
 const GLOBAL_MESSAGES = {
@@ -13,5 +13,5 @@ const ENVIROMENT_URL = {
     url: "https://nuxqa6.avtest.ink/es/"
 }
 
-export { ENVIROMENT_URL, GLOBAL_MESSAGES, GLOBAL_VARIABLES };
+export { ENVIROMENT_URL, GLOBAL_MESSAGES, GLOBAL_VARIABLES }
 

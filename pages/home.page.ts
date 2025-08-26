@@ -462,26 +462,21 @@ const HomePage: THomePage = {
             }
             case 'homeSeleccionarPasajeros': {
                 await this.selectOriginOption();
-                await this.selectDestinationOption();
                 await this.selectReturnOption();
                 await this.selectDepartureDate();
                 await this.selectReturnDate();
                 await this.selectPassengers();
                 break;
             }
-            case 'gotToBooking': {
+            case 'none':
+            default:
                 await this.selectOriginOption();
-                await this.selectDestinationOption();
                 await this.selectReturnOption();
                 await this.selectDepartureDate();
                 await this.selectReturnDate();
                 await this.selectPassengers();
                 await this.searchFlights();
                 break;
-            }
-            default: {
-                throw new Error(`Run Home => Método no reconocido: ${copys.targetMethod}`);
-            }
         }
         console.log("Run Home END ejecutado");
     }

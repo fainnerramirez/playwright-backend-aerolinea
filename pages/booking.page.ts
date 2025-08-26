@@ -1,6 +1,6 @@
 import { expect, type Page } from "@playwright/test";
 import { genericCopys } from "../data/copys";
-import { copyBooking } from "../data/copys/booking/booking.copy";
+import { genericCopys as copyBooking } from "../data/copys/index";
 import { GLOBAL_MESSAGES as m } from "../global.variables";
 import { PlaywrightHelper as helper } from "../helpers/avianca.helper";
 
@@ -45,14 +45,14 @@ const BookingPage: TBookingPage = {
             throw new Error(m.errors.initializated);
         }
 
-        if(genericCopys.homeisActiveOptionOutbound) return;
+        if (genericCopys.homeisActiveOptionOutbound) return;
 
         try {
             await page.waitForSelector("#journeysContainerId_1");
             const containerReturn = page.locator("#journeysContainerId_1");
             await expect(containerReturn).toBeVisible();
             await page.waitForTimeout(5000);
-            let indiceVueloRegreso = parseInt(copyBooking.bookingNumeroVueloRegreso);
+            let indiceVueloRegreso = parseInt(copyBooking.bookingNumeroVueloRegreso!);
             const flightOptions = containerReturn.locator('.journey_price_fare-select_label-text');
             const flightCount = await flightOptions.count();
 
@@ -88,7 +88,7 @@ const BookingPage: TBookingPage = {
         try {
 
             await page.waitForSelector('#pageWrap');
-            const flightPosition = parseInt(copyBooking.bookingNumeroVueloIda);
+            const flightPosition = parseInt(copyBooking.bookingNumeroVueloIda!);
             await page.waitForSelector('.journey_price_fare-select_label-text');
             const flightOptions = page.locator('.journey_price_fare-select_label-text');
             const flightCount = await flightOptions.count();
@@ -167,7 +167,7 @@ const BookingPage: TBookingPage = {
             await page.waitForSelector(".button.page_button.btn-action.page_button-primary-flow.ng-star-inserted");
             if (copyBooking.bookingConsultaCondicionesTarifa) {
                 const newTabPromise = page.waitForEvent("popup");
-                await page.getByRole('link', { name: copyBooking.booking[lang].bookingInformacionTarifa }).click({ delay: helper.getRandomDelay() });
+                await page.getByRole('link', { name: copyBooking.booking![lang].bookingInformacionTarifa }).click({ delay: helper.getRandomDelay() });
                 await page.waitForTimeout(3500);
                 const newTab = await newTabPromise;
                 await newTab.waitForLoadState();
@@ -194,12 +194,29 @@ const BookingPage: TBookingPage = {
 
     async run(): Promise<void> {
         console.log("Booking page start...");
-        await this.selectFlightOutbound();
-        await this.validateModalFlight();
-        await this.selectFlightReturn();
-        await this.validateModalFlight();
-        await helper.takeScreenshot("resumen-seleccion-vuelos");
-        await this.continueToPassenger();
+
+        switch (copyBooking.targetMethod) {
+            case 'bookingSeleccionarVueloIda': {
+                await this.selectFlightOutbound();
+                await this.validateModalFlight();
+                break;
+            }
+            case 'bookingSeleccionarVueloVuelta': {
+                await this.selectFlightOutbound();
+                await this.validateModalFlight();
+                await this.selectFlightReturn();
+                await this.validateModalFlight();
+                break;
+            }
+            case 'none':
+            default:
+                await this.validateModalFlight();
+                await this.selectFlightReturn();
+                await this.validateModalFlight();
+                await helper.takeScreenshot("resumen-seleccion-vuelos");
+                await this.continueToPassenger();
+                break;
+        }
         console.log("Booking page end...");
     }
 }

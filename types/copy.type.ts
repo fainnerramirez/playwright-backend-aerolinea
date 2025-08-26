@@ -69,13 +69,14 @@ type TpageAvianca =
     | 'payment'
 
 type TMethodAvianca =
+    | 'none'
     | 'homeSeleccionarOrigen'
     | 'homeSeleccionarDestino'
     | 'homeSeleccionarFechaSalida'
     | 'homeSeleccionarFechaLlegada'
     | 'homeSeleccionarPasajeros'
-    | 'gotToBooking'
-
+    | 'bookingSeleccionarVueloIda'
+    | 'bookingSeleccionarVueloVuelta'
 
 export type { copysType, Lang, Position, TMethodAvianca, TpageAvianca };
 
