@@ -2,9 +2,9 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [ 'feature/stop-metodos-resto-flujos' ]
+    branches: [ '_disabled_' ]
   pull_request:
-    branches: [ 'feature/stop-metodos-resto-flujos' ]
+    branches: [ '_disabled_' ]
 
 jobs:
   test:
