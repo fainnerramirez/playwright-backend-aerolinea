@@ -1,5 +1,5 @@
 import { expect, type Page } from "@playwright/test";
-import { copyPaseenger } from "../data/copys/passenger/passenger.copy";
+import { genericCopys as copys } from "../data/copys/index";
 import { GLOBAL_MESSAGES as m } from "../global.variables";
 import { PlaywrightHelper as helper } from "../helpers/avianca.helper";
 import { emailsData, lastNamesData, phoneNumbersData, userNamesData } from "../utils/variables";
@@ -260,11 +260,11 @@ const PassengerPage: TPassengerPage = {
                     }
                 });
             }, { positionPassenger, emailsData, phoneNumbersData, userNamesData, lastNamesData });
-             const descriptionScreenshot = `
+            const descriptionScreenshot = `
             Passenger | llenar formulario de pasajero por posición
             Posicion del pasajero ${positionPassenger}
             `
-            await helper.takeScreenshot(`llenado-formulario-pasajero-#${positionPassenger}` , descriptionScreenshot);
+            await helper.takeScreenshot(`llenado-formulario-pasajero-#${positionPassenger}`, descriptionScreenshot);
             await page.waitForTimeout(1000);
         }
         catch (error) {
@@ -450,7 +450,7 @@ const PassengerPage: TPassengerPage = {
             await expect(listOptions).toBeVisible({ timeout: 15000 });
             const childrenList = await listOptions.locator("li").all();
             const countChildren = childrenList.length;
-            const optionUser = copyPaseenger.passengeroOptionProgramFlyerFrequent;
+            const optionUser = copys.passengeroOptionProgramFlyerFrequent ?? 0;
 
             if (optionUser < 0) {
                 throw new Error("La opción escogida por el usuario para el programa de viajero frecuente no es válida");
@@ -518,8 +518,17 @@ const PassengerPage: TPassengerPage = {
 
     async run(): Promise<void> {
         console.log("Passenger page started...");
-        await this.fillFormValues();
-        await this.continueToServices();
+        switch (copys.targetMethod) {
+            case 'passengerRellenarFormulario': {
+                await this.fillFormValues();
+                break;
+            }
+            case 'none':
+            default: {
+                await this.fillFormValues();
+                await this.continueToServices();
+            }
+        }
         console.log("Passenger page ended...");
     },
 }

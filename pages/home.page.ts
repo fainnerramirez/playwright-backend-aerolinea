@@ -296,10 +296,6 @@ const HomePage: THomePage = {
                 Ciudad destino seleccionada: ${copys.homeCiudadDestino}
             `
             await helper.takeScreenshot('04-ciudad-destino', descriptionScreenShot);
-
-            if (copys.targetMethod === 'homeSeleccionarDestino') {
-                return;
-            }
         }
         catch (error) {
             console.error("Home => Ocurrió un error al selecionar la ciudad de destino ", error);
@@ -429,7 +425,6 @@ const HomePage: THomePage = {
     },
 
     async methodsPageDefault(): Promise<void> {
-        // Implementación de los métodos por defecto para la página
         await this.verifyCookies();
         await this.selectOptionTypeFlight();
     },
@@ -483,4 +478,3 @@ const HomePage: THomePage = {
 }
 
 export { HomePage };
-

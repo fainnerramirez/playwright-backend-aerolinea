@@ -210,6 +210,7 @@ const BookingPage: TBookingPage = {
             }
             case 'none':
             default:
+                await this.selectFlightOutbound();
                 await this.validateModalFlight();
                 await this.selectFlightReturn();
                 await this.validateModalFlight();
