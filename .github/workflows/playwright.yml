@@ -1,6 +1,7 @@
 name: Playwright Tests
 
 on:
+  workflow_dispatch: 
   push:
     branches: [ '_disabled_' ]
   pull_request:
