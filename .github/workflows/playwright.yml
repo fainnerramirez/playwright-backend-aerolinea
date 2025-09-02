@@ -3,9 +3,9 @@ name: Playwright Tests
 on:
   workflow_dispatch: 
   push:
-    branches: [ '_disabled_' ]
+    branches: [ 'develop' ]
   pull_request:
-    branches: [ '_disabled_' ]
+    branches: [ 'develop' ]
 
 jobs:
   test:
