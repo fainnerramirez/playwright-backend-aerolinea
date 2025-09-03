@@ -7,22 +7,24 @@ const tests: TGenericCopys[] =
           
           
           
+          
           [
             {
-              id: "miIdPrueba-03092025_demo_jesus",
+              id: "miIdPrueba-03092025-version2",
               description: "ruta Medellin a Bogota",
-              homeCiudadOrigen: "MDE",
+              homeCiudadOrigen: "BAQ",
               homeCiudadDestino: "BOG",
               targetPage: "home"
             },
             {
-              id: "miOtroIdDePrueba-03092025_demo_jesus",
+              id: "miOtroIdDePrueba-03092025-version2",
               description: "ruta barranquilla a bogota",
-              homeCiudadOrigen: "BAQ",
+              homeCiudadOrigen: "MDE",
               homeCiudadDestino: "BOG",
               targetPage: "home"
             }
           ]
+        
         
         
         
