@@ -16,23 +16,15 @@ const tests: TGenericCopys[] =
           
           
           [
-            {
-              id: "UnicoIDdePrueba-04092025_demo",
-              description: "ruta 1",
-              homeCiudadOrigen: "BAQ",
-              homeCiudadDestino: "BOG",
-              targetPage: "home",
-              targetMethod: "homeSeleccionarFechaLlegada"
-            },
-            {
-              id: "miOtroIdDePrueba-04092025_demo",
-              description: "ruta 2",
-              homeCiudadOrigen: "MDE",
-              homeCiudadDestino: "BOG",
-              targetPage: "home",
-              targetMethod: "homeSeleccionarDestino"
-            }
-          ]
+  {
+    "id": "UnicoIDdePrueba-04092025_fainner",
+    "description": "ruta 1",
+    "homeCiudadOrigen": "BAQ",
+    "homeCiudadDestino": "BOG",
+    "targetPage": "home",
+    "targetMethod": "homeSeleccionarFechaLlegada"
+  }
+]
         
         
         
