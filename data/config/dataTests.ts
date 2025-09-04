@@ -17,12 +17,12 @@ const tests: TGenericCopys[] =
           
           [
   {
-    "id": "OtroIdDePrueba-04092025_fainner",
-    "description": "ruta 3",
+    "id": "UnicoIDdePrueba-04092025_version_1",
+    "description": "ruta 1",
     "homeCiudadOrigen": "BAQ",
     "homeCiudadDestino": "BOG",
     "targetPage": "home",
-    "targetMethod": "homeSeleccionarDestino"
+    "targetMethod": "homeSeleccionarFechaLlegada"
   }
 ]
         
