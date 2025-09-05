@@ -18,9 +18,9 @@ const tests: TGenericCopys[] =
           
           [
   {
-    "id": "miOtroIdDePrueba-04092025_fainner",
-    "description": "ruta 2 version2",
-    "homeCiudadOrigen": "MDE",
+    "id": "OtroIdDePrueba-04092025_fainner",
+    "description": "ruta 3 version2",
+    "homeCiudadOrigen": "BAQ",
     "homeCiudadDestino": "BOG",
     "targetPage": "home",
     "targetMethod": "homeSeleccionarDestino"
