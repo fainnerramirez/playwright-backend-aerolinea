@@ -1,10 +1,13 @@
 import { defineConfig } from '@playwright/test';
+import { tests } from './data/config/dataTests';
 
 export default defineConfig({
   testDir: './tests',
   timeout: 200000,
   reporter: 'html',
   outputDir: 'test-results',
+  workers: tests.length,
+  fullyParallel: true,
   use: {
     headless: true,
     screenshot: 'on',
@@ -28,6 +31,7 @@ export default defineConfig({
         },
         video: 'off'
       },
+      fullyParallel: true
     },
   ],
 });

@@ -19,6 +19,8 @@ import {
   type TServicesPage,
 } from "../pages/index";
 
+test.describe.configure({ mode: "parallel" })
+
 data.forEach(itemTest => {
   test.describe(`${itemTest.id}`, () => {
     let page: Page | undefined | any;
